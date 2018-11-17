@@ -27,25 +27,52 @@ public class Login extends HttpServlet {
     {
         String name=request.getParameter("id");
         String password = request.getParameter("pass");
+        String user = request.getParameter("usr");
+        RequestDispatcher rd = null;
         PrintWriter out=response.getWriter();
-
+        
+        if (user.equals("Admin")){
         try {
             LoginDAO l = new LoginDAO();
-            String result = l.checkInfo(name, password);
+            String result = l.checkInfo(name, password,user);
+            out.print(result);
             if (result.equals("Login successfull"))
             {
-                RequestDispatcher rd=request.getRequestDispatcher("inside.html");  
+                rd=request.getRequestDispatcher("signup.html");  
                 rd.forward(request,response);
             }
-            else
+            else if(result.equals("invalid login details"))
             {
-                RequestDispatcher rd=request.getRequestDispatcher("newhtml.html");  
-                rd.include(request,response);  
+                rd=request.getRequestDispatcher("newhtml.html");  
+                rd.forward(request,response);  
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        else if (user.equals("Student")){
+        try {
+            LoginDAO l = new LoginDAO();
+            String result = l.checkInfo(name, password,user);
+            if (result.equals("Login successfull"))
+            {
+                rd=request.getRequestDispatcher("Student.html");  
+                rd.forward(request,response);
+            }
+            else if (result.equals("invalid login details"))
+            {
+                /*RequestDispatcher rd=request.getRequestDispatcher("newhtml.html");  
+                rd.forward(request,response);  */
+               // out.print(result);
+                response.sendRedirect("newhtml.html");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
         
     }

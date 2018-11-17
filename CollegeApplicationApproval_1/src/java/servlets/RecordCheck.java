@@ -28,5 +28,24 @@ public class RecordCheck {
         ps.setString(4,pass);
         int rs=ps.executeUpdate();
         return rs;
-    }    
+    } 
+       public String delete(String id,String firstname,String user) throws ClassNotFoundException, SQLException, IOException
+    { 
+         String rs=null;
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
+        if (user.equals("teacher")){
+            PreparedStatement ps = con.prepareStatement("delete from teacher where id='"+id+"' and firstName ='"+firstname+"'");
+            ps.executeUpdate();
+            rs="teacher";
+            
+        }
+        else if (user.equals("student"))
+        {
+         PreparedStatement ps = con.prepareStatement("delete from students where id='"+id+"' and firstName ='"+firstname+"'");
+            ps.executeUpdate();
+            rs="student";
+        }
+        return rs;
+    }
 }

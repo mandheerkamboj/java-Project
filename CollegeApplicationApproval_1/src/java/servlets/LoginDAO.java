@@ -26,16 +26,37 @@ public class LoginDAO {
         this.con=DriverManager.getConnection(url, user, password);
         this.st=con.createStatement();
     }
-   
-    public String checkInfo(String username,String password) throws SQLException
+    public String checkInfo(String username,String password,String user) throws SQLException
     {
+        
+        String ret=null;
+        if (user.equals("Student"))
+        {
          String query="Select * from students where id='"+username+"' and password ='"+password+"'";
         ResultSet rs=st.executeQuery(query);
         while(rs.next())
         {
-            return "Login successfull";
+            ret= "Login successfull";
         }
-        return "invalid login details";
+        }
+        else if (user.equals("Admin"))
+        {
+         String query="Select * from admin where id='"+username+"' and password ='"+password+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            ret= "Login successfull";
+        }
+        }
+        else{
+            ret= "invalid login details";
+        }
+        return ret;
     }
-
+    public static void main(String[] args) throws SQLException, ClassNotFoundException
+    {
+        LoginDAO l = new LoginDAO();
+        String result = l.checkInfo("1611980512", "asdfasdfa","admin");
+        System.out.println(result);
+    }
 }
