@@ -34,13 +34,13 @@ public class RecordCheck {
          String rs=null;
         Class.forName("com.mysql.jdbc.Driver");  
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
-        if (user.equals("teacher")){
+        if (user.equals("Teacher")){
             PreparedStatement ps = con.prepareStatement("delete from teacher where id='"+id+"' and firstName ='"+firstname+"'");
             ps.executeUpdate();
             rs="teacher";
             
         }
-        else if (user.equals("student"))
+        else if (user.equals("Student"))
         {
          PreparedStatement ps = con.prepareStatement("delete from students where id='"+id+"' and firstName ='"+firstname+"'");
             ps.executeUpdate();

@@ -27,14 +27,23 @@ public class delete extends HttpServlet {
         PrintWriter out = res.getWriter();
         String id = req.getParameter("id");
         String fname=req.getParameter("firstname");
-        String user=req.getParameter("user");
+        String user=req.getParameter("usr");
         RecordCheck rs = new RecordCheck();
+        out.print(id+" "+fname+" "+user);
+        
         String ad;
         try {
             
              ad=rs.delete(id,fname,user);
-             RequestDispatcher rd=req.getRequestDispatcher("Delete.html");  
+             if (ad.equals("student"))
+             {
+                 out.print("<html><head></head>");
+                 out.print("<body>");
+                 out.print("Student deleted");
+                 out.print("</body></html>");
+             RequestDispatcher rd=req.getRequestDispatcher("delete.html");  
              rd.forward(req,res);
+             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(check.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

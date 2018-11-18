@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
         String user = request.getParameter("usr");
         RequestDispatcher rd = null;
         PrintWriter out=response.getWriter();
-        
+        request.setAttribute("name", name);
         if (user.equals("Admin")){
         try {
             LoginDAO l = new LoginDAO();
@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
             out.print(result);
             if (result.equals("Login successfull"))
             {
-                rd=request.getRequestDispatcher("signup.html");  
+                rd=request.getRequestDispatcher("signup.jsp");  
                 rd.forward(request,response);
             }
             else if(result.equals("invalid login details"))
