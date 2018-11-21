@@ -48,4 +48,20 @@ public class RecordCheck {
         }
         return rs;
     }
+        public int insertapp(String id,String first,String last,String from,String to,String reason) throws ClassNotFoundException, SQLException, IOException
+    { 
+        String stat="pending";
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
+        PreparedStatement ps = con.prepareStatement("insert into application(id,firstName,lastName,frm,upto,reason,status) values(?,?,?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, first);
+        ps.setString(3, last);
+        ps.setString(4,from);
+        ps.setString(5,to);
+        ps.setString(6,reason);
+        ps.setString(7,stat);
+        int rs=ps.executeUpdate();
+        return rs;
+    } 
 }

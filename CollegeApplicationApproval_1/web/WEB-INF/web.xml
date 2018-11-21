@@ -20,6 +20,10 @@
         <servlet-name>delete</servlet-name>
         <servlet-class>servlets.delete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>application</servlet-name>
+        <servlet-class>servlets.application</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>check</servlet-name>
         <url-pattern>/check</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>delete</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/application</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

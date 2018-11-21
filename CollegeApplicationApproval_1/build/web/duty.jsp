@@ -18,7 +18,6 @@
   background-color: #f1f1f1;
   overflow:hidden;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -83,9 +82,6 @@ label {
   margin-bottom: 10px;
   display: block;
 }
-
-
-
 .btn {
   background-color: #4CAF50;
   color: white;
@@ -126,8 +122,7 @@ textarea {
     background-color: white;
     resize: none;
 }
-
-        </style>
+</style>
     </head>
     <body>
           <sql:setDataSource var = "data" driver = "com.mysql.jdbc.Driver"
@@ -139,57 +134,66 @@ textarea {
          SELECT * from students where id=?
           <sql:param value = "${Id}" />
       </sql:query>
+     
             <%=(new java.util.Date()).toLocaleString()%>
              <c:forEach var = "row" items = "${result.rows}">
- <div class="row">
+                
+                      <div class="row">
   <div class="col-75">
     <div class="container">
-        <form id="gatepass" action="application" method="post">
-       <div class="row">
+          <form id="gatepass" action="check" >
+        <div class="row">
           <div class="col-33">
             <label for="fname"><i class="fa fa-user"></i> First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="first name" required>
-              <label for="pass"><i class="fa fa-key icon"></i>Password</label>
-            <input type="password" id="pass" name="pass" placeholder="Password" required>
-           
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" required >
-
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" >
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip">
-             
-            </div>
-          </div>
+            <input type="text" id="fname" name="firstname" value="<c:out value = "${row.firstName}"/>" placeholder="first name" required>
+              <label for="from"> Date From</label>
+            <input type="date" id="from" name="from" required>
+            <p><b>Time Slot</b></p>
+            <label for="full">
+             <input type="radio" id="full" name="timeslot" value="full" >Full Day<br></label>
+              <label for="period">
+             <input type="radio" id="period" name="timeslot" value="period"checked>Period Wise<br></label>
+             <label for="lect" id="lect">Lectures: 
+                 1:<input type="checkbox" name="lect1">
+                 2:<input type="checkbox" name="lect2">
+                 3:<input type="checkbox" name="lect3">
+                 4:<input type="checkbox" name="lect4">
+                 5:<input type="checkbox" name="lect5">
+                 6:<input type="checkbox" name="lect6">
+                 7:<input type="checkbox" name="lect7">
+                 8:<input type="checkbox" name="lect8">
+             </label>
+            
           </div>
           <div class="col-33">
           <label for="lname"><i class="fa fa-user"></i>Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="last name" required>
-          
-            <label for="re-pass"><i class="fa fa-key icon"></i>Re-Enter Password</label>
-            <input type="password" id="re-pass" name="re-pass" placeholder="Re-Enter Password" required>
-            <label for="pnum">Phone number</label>
-            <input type="text" id="pnum" name="phonenumber" placeholder="">
+            <input type="text" id="lname" name="lastname" value="<c:out value = "${row.lastName}"/>" placeholder="last name" required>
+          <label for=to"> Date To</label>
+            <input type="date" id="to" name="to" required>
+           
           </div>
             <div class="col-33">
             <label for="id">Enrollment Number</label>
-            <input type="text" id="id" name="id" placeholder="Enrollment Number" required>
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="abc@example.com">
-             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" >
+            <input type="text" id="id" name="id" value="<c:out value = "${row.id}"/>" placeholder="Enrollment Number" required>
+            
             </div>
         </div>
-      </form>
+            
+          <center><input type="submit" value="Done" class="btn"></center>
+            </form>
              </c:forEach>
      </div>
   </div>
 </div>
-        
+<script>
+$(document).ready(function(){
+    $("#full").click(function(){
+        $("#lect").hide();
+    });
+    $("#period").click(function(){
+        $("#lect").show();
+    });
+});
+</script>
     </body>
 </html>

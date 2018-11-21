@@ -29,14 +29,14 @@ public class LoginDAO {
     public String checkInfo(String username,String password,String user) throws SQLException
     {
         
-        String ret=null;
+       // String ret=null;
         if (user.equals("Student"))
         {
          String query="Select * from students where id='"+username+"' and password ='"+password+"'";
         ResultSet rs=st.executeQuery(query);
         while(rs.next())
         {
-            ret= "Login successfull";
+            return "Student";
         }
         }
         else if (user.equals("Admin"))
@@ -45,18 +45,27 @@ public class LoginDAO {
         ResultSet rs=st.executeQuery(query);
         while(rs.next())
         {
-            ret= "Login successfull";
+            return "Admin";
         }
         }
-        else{
-            ret= "invalid login details";
+        else if (user.equals("Teacher"))
+        {
+         String query="Select * from teacher where id='"+username+"' and password ='"+password+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            return "teacher";
         }
-        return ret;
+        }
+
+            return "invalid login details";
+        
+
     }
     public static void main(String[] args) throws SQLException, ClassNotFoundException
     {
         LoginDAO l = new LoginDAO();
-        String result = l.checkInfo("1611980512", "asdfasdfa","admin");
+        String result = l.checkInfo("1611980501", "anmol01","Student");
         System.out.println(result);
     }
 }

@@ -168,6 +168,9 @@ li a:hover:not(.active) {
 iframe{
     border:none;
 }
+#hello{
+    color:red;
+}
 </style>
 </head>
 <body>
@@ -188,8 +191,7 @@ iframe{
 
     </nav>
             <div class="col-sm-offset-3 col-sm-8" style="padding:0; float:right; background-color: #f1f1f1;">
-                <%String name=(String)request.getAttribute("name");
-out.print("your name"+name);%>
+
                 <iframe src="register.html" width="100%" height="700" name="iframe"></iframe>
         </div>
     </div>
