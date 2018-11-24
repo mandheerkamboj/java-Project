@@ -29,6 +29,15 @@ public class RecordCheck {
         int rs=ps.executeUpdate();
         return rs;
     } 
+     public int update(String id,String action) throws ClassNotFoundException, SQLException, IOException
+    { 
+         
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
+        PreparedStatement ps = con.prepareStatement("update application set status='"+action+"'where id='"+id +"'");
+        int rs=ps.executeUpdate();
+        return rs;
+    } 
        public String delete(String id,String firstname,String user) throws ClassNotFoundException, SQLException, IOException
     { 
          String rs=null;

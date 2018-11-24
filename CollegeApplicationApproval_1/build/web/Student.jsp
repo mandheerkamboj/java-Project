@@ -99,6 +99,7 @@ iframe{
           <li><a href="#">Medical Leave</a></li>
           <li><a href="#">Re-registration Form</a></li>
           <li><a href="#">Re-appear Form</a></li>
+          <li><a href="appStat.jsp?name=${name}"target="iframe">view Application Status</a></li>
         </ul>
   <li><a href="#Disco">Disciplinary Actions</a></li>
   <li><a href="#password">Change Password</a></li>

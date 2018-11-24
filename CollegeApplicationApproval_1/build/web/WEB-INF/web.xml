@@ -24,6 +24,10 @@
         <servlet-name>application</servlet-name>
         <servlet-class>servlets.application</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateStat</servlet-name>
+        <servlet-class>servlets.updateStat</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>check</servlet-name>
         <url-pattern>/check</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>application</servlet-name>
         <url-pattern>/application</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateStat</servlet-name>
+        <url-pattern>/updateStat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -17,31 +17,29 @@
               <sql:setDataSource var = "data" driver = "com.mysql.jdbc.Driver"
          url = "jdbc:mysql://localhost/user"
          user = "root"  password = ""/>
- 
-      <sql:query dataSource = "${data}" var = "result">
-         SELECT * from application;
-      </sql:query>
-
+        <%String name=(String)request.getParameter("name");%>
+        <c:set var = "Id" value = "${name}"/>
+        <sql:query dataSource = "${data}" var = "result">
+         SELECT * from application where id="${name}";
+        </sql:query>
+         <c:out value = "${row.reason}"/>
       <table border = "1" width = "100%">
          <tr>
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Status</th>
-            <th>Action</th>
+            <th>Reason</th>
            
          </tr>
          
          <c:forEach var = "row" items = "${result.rows}">
             <tr>
-                 <c:set var = "Id" value = "${row.id}"/>
-               <td><c:out value = "${Id}"/></td>
+               <td><c:out value = "${row.id}"/></td>
                <td><c:out value = "${row.firstName}"/></td>
                <td><c:out value = "${row.lastName}"/></td>
                <td><c:out value = "${row.status}"/></td>
-              
-               <td><a href="viewApplication.jsp?name=${Id}">View Application</a></td>
-              
+              <td><c:out value = "${row.reason}"/></td>
             </tr>
          </c:forEach>
       </table>

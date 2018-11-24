@@ -9,14 +9,13 @@ import java.sql.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 
-public final class duty_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class appStat_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_param_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_set_var_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
@@ -30,7 +29,6 @@ public final class duty_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
-    _jspx_tagPool_sql_param_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_set_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_out_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
@@ -39,7 +37,6 @@ public final class duty_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspDestroy() {
-    _jspx_tagPool_sql_param_value_nobody.release();
     _jspx_tagPool_c_forEach_var_items.release();
     _jspx_tagPool_c_set_var_value_nobody.release();
     _jspx_tagPool_c_out_value_nobody.release();
@@ -79,161 +76,45 @@ public final class duty_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
       out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n");
       out.write("    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
-      out.write("        <title>Gate Pass</title>\n");
-      out.write("        <style>\n");
-      out.write(" body {\n");
-      out.write("  font-family: Arial;\n");
-      out.write("  font-size: 14px;\n");
-      out.write("  background-color: #f1f1f1;\n");
-      out.write("  overflow:hidden;\n");
-      out.write("}\n");
-      out.write("* {\n");
-      out.write("  box-sizing: border-box;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".row {\n");
-      out.write("  display: -ms-flexbox; /* IE10 */\n");
-      out.write("  display: flex;\n");
-      out.write("  -ms-flex-wrap: wrap; /* IE10 */\n");
-      out.write("  flex-wrap: wrap;\n");
-      out.write("  margin: 0px -16px;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".col-25 {\n");
-      out.write("  -ms-flex: 25%; /* IE10 */\n");
-      out.write("  flex: 25%;\n");
-      out.write("}\n");
-      out.write(".col-33 {\n");
-      out.write("  -ms-flex: 25%; /* IE10 */\n");
-      out.write("  flex: 25%;\n");
-      out.write("}\n");
-      out.write(".col-50 {\n");
-      out.write("  -ms-flex: 50%; /* IE10 */\n");
-      out.write("  flex: 50%;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".col-75 {\n");
-      out.write("  -ms-flex: 75%; /* IE10 */\n");
-      out.write("  flex: 75%;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".col-25,\n");
-      out.write(".col-33,\n");
-      out.write(".col-50 \n");
-      out.write(" {\n");
-      out.write("  padding: 0 8px;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".container {\n");
-      out.write("  background-color: #f2f2f2;\n");
-      out.write("  padding: 5px 20px 15px 20px;\n");
-      out.write("  border: 1px solid lightgrey;\n");
-      out.write("  border-radius: 3px;\n");
-      out.write("}\n");
-      out.write("input[type=date] {\n");
-      out.write("  width: 45%;\n");
-      out.write("  margin-bottom: 20px;\n");
-      out.write("  padding: 5px 8px 9px 9px;\n");
-      out.write("  border: 1px solid #ccc;\n");
-      out.write("  border-radius: 3px;\n");
-      out.write("}\n");
-      out.write("input[type=text] {\n");
-      out.write("  width: 100%;\n");
-      out.write("  margin-bottom: 20px;\n");
-      out.write("  padding: 8px;\n");
-      out.write("  border: 1px solid #ccc;\n");
-      out.write("  border-radius: 3px;\n");
-      out.write("}\n");
-      out.write("input[type=submit] {\n");
-      out.write("  width: 10%;\n");
-      out.write("}\n");
-      out.write("label {\n");
-      out.write("  margin-bottom: 10px;\n");
-      out.write("  display: block;\n");
-      out.write("}\n");
-      out.write(".btn {\n");
-      out.write("  background-color: #4CAF50;\n");
-      out.write("  color: white;\n");
-      out.write("  padding: 5px 5px 5px 5px;\n");
-      out.write("  \n");
-      out.write("  margin: 10px 0;\n");
-      out.write("  border: none;\n");
-      out.write("  width: 100%;\n");
-      out.write("  border-radius: 3px;\n");
-      out.write("  cursor: pointer;\n");
-      out.write("  font-size: 17px;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write(".btn:hover {\n");
-      out.write("  background-color: #45a049;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write("a {\n");
-      out.write("  color: #2196F3;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write("hr {\n");
-      out.write("  border: 1px solid lightgrey;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write("span.price {\n");
-      out.write("  float: right;\n");
-      out.write("  color: grey;\n");
-      out.write("}\n");
-      out.write("\n");
-      out.write("textarea {\n");
-      out.write("    width: 60%;\n");
-      out.write("    height: 150px;\n");
-      out.write("    padding: 5px 10px;\n");
-      out.write("    box-sizing: border-box;\n");
-      out.write("    border: 2px solid #ccc;\n");
-      out.write("    border-radius: 4px;\n");
-      out.write("    background-color: white;\n");
-      out.write("    resize: none;\n");
-      out.write("}\n");
-      out.write("</style>\n");
+      out.write("    <title>Chitkara University</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("          ");
+      out.write("              ");
       if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("        ");
+      out.write('\n');
+      out.write(' ');
 String name=(String)request.getParameter("name");
       out.write("\n");
       out.write("        ");
       if (_jspx_meth_c_set_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("        ");
+      out.write("      ");
       if (_jspx_meth_sql_query_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("     \n");
-      out.write("            ");
-      out.print((new java.util.Date()).toLocaleString());
-      out.write("\n");
-      out.write("             ");
+      out.write(" \n");
+      out.write("      <table border = \"1\" width = \"100%\">\n");
+      out.write("         <tr>\n");
+      out.write("            <th>ID</th>\n");
+      out.write("            <th>First Name</th>\n");
+      out.write("            <th>Last Name</th>\n");
+      out.write("            <th>Status</th>\n");
+      out.write("            <th>Action</th>\n");
+      out.write("           \n");
+      out.write("         </tr>\n");
+      out.write("         \n");
+      out.write("         ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("     </div>\n");
-      out.write("  </div>\n");
-      out.write("</div>\n");
-      out.write("<script>\n");
-      out.write("$(document).ready(function(){\n");
-      out.write("    $(\"#full\").click(function(){\n");
-      out.write("        $(\"#lect\").hide();\n");
-      out.write("    });\n");
-      out.write("    $(\"#period\").click(function(){\n");
-      out.write("        $(\"#lect\").show();\n");
-      out.write("    });\n");
-      out.write("});\n");
-      out.write("</script>\n");
+      out.write("      </table>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
@@ -312,11 +193,9 @@ String name=(String)request.getParameter("name");
         }
         do {
           out.write("\n");
-          out.write("         SELECT * from students where id=?\n");
-          out.write("          ");
-          if (_jspx_meth_sql_param_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_sql_query_0, _jspx_page_context, _jspx_push_body_count_sql_query_0))
-            return true;
-          out.write("\n");
+          out.write("         SELECT * from application where id=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\";\n");
           out.write("      ");
           int evalDoAfterBody = _jspx_th_sql_query_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -340,24 +219,6 @@ String name=(String)request.getParameter("name");
     return false;
   }
 
-  private boolean _jspx_meth_sql_param_0(javax.servlet.jsp.tagext.JspTag _jspx_th_sql_query_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sql_query_0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  sql:param
-    org.apache.taglibs.standard.tag.rt.sql.ParamTag _jspx_th_sql_param_0 = (org.apache.taglibs.standard.tag.rt.sql.ParamTag) _jspx_tagPool_sql_param_value_nobody.get(org.apache.taglibs.standard.tag.rt.sql.ParamTag.class);
-    _jspx_th_sql_param_0.setPageContext(_jspx_page_context);
-    _jspx_th_sql_param_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sql_query_0);
-    _jspx_th_sql_param_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Id}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_sql_param_0 = _jspx_th_sql_param_0.doStartTag();
-    if (_jspx_th_sql_param_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_sql_param_value_nobody.reuse(_jspx_th_sql_param_0);
-      return true;
-    }
-    _jspx_tagPool_sql_param_value_nobody.reuse(_jspx_th_sql_param_0);
-    return false;
-  }
-
   private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -374,60 +235,26 @@ String name=(String)request.getParameter("name");
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\n");
-          out.write("                \n");
-          out.write("                      <div class=\"row\">\n");
-          out.write("  <div class=\"col-75\">\n");
-          out.write("    <div class=\"container\">\n");
-          out.write("          <form id=\"gatepass\" action=\"check\" >\n");
-          out.write("        <div class=\"row\">\n");
-          out.write("          <div class=\"col-33\">\n");
-          out.write("            <label for=\"fname\"><i class=\"fa fa-user\"></i> First Name</label>\n");
-          out.write("            <input type=\"text\" id=\"fname\" name=\"firstname\" value=\"");
+          out.write("            <tr>\n");
+          out.write("               <td>");
           if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("\" placeholder=\"first name\" required>\n");
-          out.write("              <label for=\"from\"> Date From</label>\n");
-          out.write("            <input type=\"date\" id=\"from\" name=\"from\" required>\n");
-          out.write("            <p><b>Time Slot</b></p>\n");
-          out.write("            <label for=\"full\">\n");
-          out.write("             <input type=\"radio\" id=\"full\" name=\"timeslot\" value=\"full\" >Full Day<br></label>\n");
-          out.write("              <label for=\"period\">\n");
-          out.write("             <input type=\"radio\" id=\"period\" name=\"timeslot\" value=\"period\"checked>Period Wise<br></label>\n");
-          out.write("             <label for=\"lect\" id=\"lect\">Lectures: \n");
-          out.write("                 1:<input type=\"checkbox\" name=\"lect1\">\n");
-          out.write("                 2:<input type=\"checkbox\" name=\"lect2\">\n");
-          out.write("                 3:<input type=\"checkbox\" name=\"lect3\">\n");
-          out.write("                 4:<input type=\"checkbox\" name=\"lect4\">\n");
-          out.write("                 5:<input type=\"checkbox\" name=\"lect5\">\n");
-          out.write("                 6:<input type=\"checkbox\" name=\"lect6\">\n");
-          out.write("                 7:<input type=\"checkbox\" name=\"lect7\">\n");
-          out.write("                 8:<input type=\"checkbox\" name=\"lect8\">\n");
-          out.write("             </label>\n");
-          out.write("            \n");
-          out.write("          </div>\n");
-          out.write("          <div class=\"col-33\">\n");
-          out.write("          <label for=\"lname\"><i class=\"fa fa-user\"></i>Last Name</label>\n");
-          out.write("            <input type=\"text\" id=\"lname\" name=\"lastname\" value=\"");
+          out.write("</td>\n");
+          out.write("               <td>");
           if (_jspx_meth_c_out_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("\" placeholder=\"last name\" required>\n");
-          out.write("          <label for=to\"> Date To</label>\n");
-          out.write("            <input type=\"date\" id=\"to\" name=\"to\" required>\n");
-          out.write("           \n");
-          out.write("          </div>\n");
-          out.write("            <div class=\"col-33\">\n");
-          out.write("            <label for=\"id\">Enrollment Number</label>\n");
-          out.write("            <input type=\"text\" id=\"id\" name=\"id\" value=\"");
+          out.write("</td>\n");
+          out.write("               <td>");
           if (_jspx_meth_c_out_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("\" placeholder=\"Enrollment Number\" required>\n");
-          out.write("            \n");
-          out.write("            </div>\n");
-          out.write("        </div>\n");
-          out.write("            \n");
-          out.write("          <center><input type=\"submit\" value=\"Done\" class=\"btn\"></center>\n");
-          out.write("            </form>\n");
-          out.write("             ");
+          out.write("</td>\n");
+          out.write("               <td>");
+          if (_jspx_meth_c_out_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("</td>\n");
+          out.write("               <td><a href=\"viewApplication.jsp\">View Application</a></td>\n");
+          out.write("            </tr>\n");
+          out.write("         ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -455,7 +282,7 @@ String name=(String)request.getParameter("name");
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_0.setPageContext(_jspx_page_context);
     _jspx_th_c_out_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.firstName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
     if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
@@ -473,7 +300,7 @@ String name=(String)request.getParameter("name");
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_1.setPageContext(_jspx_page_context);
     _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.lastName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.firstName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
     if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
@@ -491,13 +318,31 @@ String name=(String)request.getParameter("name");
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_2.setPageContext(_jspx_page_context);
     _jspx_th_c_out_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.lastName}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_2 = _jspx_th_c_out_2.doStartTag();
     if (_jspx_th_c_out_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
       return true;
     }
     _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_3.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.status}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_3 = _jspx_th_c_out_3.doStartTag();
+    if (_jspx_th_c_out_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
     return false;
   }
 }
