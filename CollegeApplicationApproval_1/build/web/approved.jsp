@@ -15,14 +15,18 @@
     </head>
     <body>
             <%  
+                String stat="Approved by teacher";
         Connection conn = null;
         Statement stmt = null;
        try{
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
         stmt = con.createStatement();
-        String sql = "SELECT * from application" ;
+        String sql = "SELECT * from application where status='"+stat+"'" ;
        ResultSet rs = stmt.executeQuery(sql);
+       if (rs==null){
+       System.out.print("No Pending Applicatons!");
+       }
        %>
 
       <table border = "1" width = "100%">
@@ -43,7 +47,7 @@
                <td><%=rs.getString("lastName")%></td>
                <td><%=rs.getString("status")%></td>
               
-               <td><a href="viewApplication.jsp?name=<%=rs.getString("id")%>">View Application</a></td>
+               <td><a href="viewApplication.jsp?name=$<%=rs.getString("id")%>">View Application</a></td>
               
             </tr>
               <%

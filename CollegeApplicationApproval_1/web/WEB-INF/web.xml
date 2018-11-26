@@ -28,6 +28,14 @@
         <servlet-name>updateStat</servlet-name>
         <servlet-class>servlets.updateStat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>changePass</servlet-name>
+        <servlet-class>servlets.changePass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatepass</servlet-name>
+        <servlet-class>servlets.updatepass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>check</servlet-name>
         <url-pattern>/check</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>updateStat</servlet-name>
         <url-pattern>/updateStat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePass</servlet-name>
+        <url-pattern>/changePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatepass</servlet-name>
+        <url-pattern>/updatepass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

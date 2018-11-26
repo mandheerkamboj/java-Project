@@ -73,14 +73,14 @@ iframe{
   <li class="dropdown"><a class="active dropdown-toggle" data-toggle="dropdown" href="#">Application<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="Allapplications.jsp?name=${name}" target="iframe">All Applications</a></li>
-          <li><a href="duty.jsp?name=${name}" target="iframe">Pending Applications</a></li>
-          <li><a href="#">Approved Applications</a></li>
+          <li><a href="pending.jsp?name=${name}" target="iframe">Pending Applications</a></li>
+          <li><a href="approved.jsp?name=${name}" target="iframe">Approved Applications</a></li>
         </ul>
   <li><a href="#password">Change Password</a></li>
   <li><a href="#logout"> <span class="glyphicon glyphicon-log-out"></span> 
           <%String id=(String)request.getAttribute("name");
             out.print("Logout "+id);
-          session.setAttribute("name", id);%>
+            session.setAttribute("name", id);%>
       </a></li>
 </ul>
     </nav>

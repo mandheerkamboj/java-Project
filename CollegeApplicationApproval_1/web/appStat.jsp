@@ -14,15 +14,20 @@
     <title>Chitkara University</title>
     </head>
     <body>
-              <sql:setDataSource var = "data" driver = "com.mysql.jdbc.Driver"
-         url = "jdbc:mysql://localhost/user"
-         user = "root"  password = ""/>
-        <%String name=(String)request.getParameter("name");%>
-        <c:set var = "Id" value = "${name}"/>
-        <sql:query dataSource = "${data}" var = "result">
-         SELECT * from application where id="${name}";
-        </sql:query>
-         <c:out value = "${row.reason}"/>
+              <%  
+        String id=(String)request.getParameter("name");
+        Connection conn = null;
+        Statement stmt = null;
+       try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
+        stmt = con.createStatement();
+        String sql = "SELECT * from application where id='"+id+"'" ;
+       ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+      
+      
+        %>
       <table border = "1" width = "100%">
          <tr>
             <th>ID</th>
@@ -32,16 +37,28 @@
             <th>Reason</th>
            
          </tr>
-         
-         <c:forEach var = "row" items = "${result.rows}">
+         <p id="progress"><c:set var="progress" value = "${row.status}"/></p>
+        
             <tr>
-               <td><c:out value = "${row.id}"/></td>
-               <td><c:out value = "${row.firstName}"/></td>
-               <td><c:out value = "${row.lastName}"/></td>
-               <td><c:out value = "${row.status}"/></td>
-              <td><c:out value = "${row.reason}"/></td>
+               <td><%=rs.getString("id")%></td>
+               <td><%=rs.getString("firstName")%></td>
+               <td><%=rs.getString("lastName")%></td>
+               <td>
+                         <%=rs.getString("status")%>
+               </td>
+              <td><%=rs.getString("reason")%></td>
             </tr>
-         </c:forEach>
+    
       </table>
+    <script>
+        </script>
+ <%
+    }
+}
+catch(Exception e)
+{
+    out.print(e);
+}
+%>
     </body>
 </html>

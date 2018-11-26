@@ -1,3 +1,8 @@
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +47,14 @@
              <option value="Admin">Admin</option>
                 </select>
                 </div>
-</div>
+
               <center> <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Login</button></center>
           </form>
-        
+        </div>
         <div class="modal-footer">
-          <p>Forgot <a href="forgotPassword.html">Password?</a></p>
+            <form action="forgotPassword.jsp">
+            <p><button type="submit" class="btn btn-danger">Forgot Password</button></p>
+            </form>
         </div>
     </div>
     <script>

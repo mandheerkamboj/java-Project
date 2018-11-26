@@ -125,18 +125,20 @@ textarea {
 </style>
     </head>
     <body>
-          <sql:setDataSource var = "data" driver = "com.mysql.jdbc.Driver"
-         url = "jdbc:mysql://localhost/user"
-         user = "root"  password = ""/>
-        <%String name=(String)request.getParameter("name");%>
-        <c:set var = "Id" value = "${name}"/>
-        <sql:query dataSource = "${data}" var = "result">
-         SELECT * from students where id=?
-          <sql:param value = "${Id}" />
-      </sql:query>
-     
-            <%=(new java.util.Date()).toLocaleString()%>
-             <c:forEach var = "row" items = "${result.rows}">
+ <%  
+        String id=(String)request.getParameter("name");
+        Connection conn = null;
+        Statement stmt = null;
+       try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
+        stmt = con.createStatement();
+        String sql = "SELECT * from students where id='"+id+"'" ;
+       ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+      
+      
+        %>   
                 
                       <div class="row">
   <div class="col-75">
@@ -145,14 +147,14 @@ textarea {
         <div class="row">
           <div class="col-33">
             <label for="fname"><i class="fa fa-user"></i> First Name</label>
-            <input type="text" id="fname" name="firstname" value="<c:out value = "${row.firstName}"/>" placeholder="first name" required>
+            <input type="text" id="fname" name="firstname" value="<%=rs.getString("firstName")%>" placeholder="first name" required>
               <label for="from"> Date From</label>
             <input type="date" id="from" name="from" required>
             <p><b>Time Slot</b></p>
             <label for="full">
              <input type="radio" id="full" name="timeslot" value="full" >Full Day<br></label>
               <label for="period">
-             <input type="radio" id="period" name="timeslot" value="period"checked>Period Wise<br></label>
+             <input type="radio" id="period" name="timeslot" value="period" checked>Period Wise<br></label>
              <label for="lect" id="lect">Lectures: 
                  1:<input type="checkbox" name="lect1">
                  2:<input type="checkbox" name="lect2">
@@ -167,24 +169,32 @@ textarea {
           </div>
           <div class="col-33">
           <label for="lname"><i class="fa fa-user"></i>Last Name</label>
-            <input type="text" id="lname" name="lastname" value="<c:out value = "${row.lastName}"/>" placeholder="last name" required>
+            <input type="text" id="lname" name="lastname" value="<%=rs.getString("lastName")%>" placeholder="last name" required>
           <label for=to"> Date To</label>
             <input type="date" id="to" name="to" required>
            
           </div>
             <div class="col-33">
             <label for="id">Enrollment Number</label>
-            <input type="text" id="id" name="id" value="<c:out value = "${row.id}"/>" placeholder="Enrollment Number" required>
+            <input type="text" id="id" name="id" value="<%=rs.getString("id")%>" placeholder="Enrollment Number" required>
             
             </div>
         </div>
             
           <center><input type="submit" value="Done" class="btn"></center>
             </form>
-             </c:forEach>
+            
      </div>
   </div>
 </div>
+             <%
+    }
+}
+catch(Exception e)
+{
+    out.print(e);
+}
+%>
 <script>
 $(document).ready(function(){
     $("#full").click(function(){

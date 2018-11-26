@@ -14,13 +14,16 @@
     <title>Chitkara University</title>
     </head>
     <body>
-              <sql:setDataSource var = "data" driver = "com.mysql.jdbc.Driver"
-         url = "jdbc:mysql://localhost/user"
-         user = "root"  password = ""/>
- 
-      <sql:query dataSource = "${data}" var = "result">
-         SELECT * from application;
-      </sql:query>
+            <%  
+        Connection conn = null;
+        Statement stmt = null;
+       try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
+        stmt = con.createStatement();
+        String sql = "SELECT * from application" ;
+       ResultSet rs = stmt.executeQuery(sql);
+       %>
 
       <table border = "1" width = "100%">
          <tr>
@@ -31,19 +34,27 @@
             <th>Action</th>
            
          </tr>
-         
-         <c:forEach var = "row" items = "${result.rows}">
-            <tr>
-                 <c:set var = "Id" value = "${row.id}"/>
-               <td><c:out value = "${Id}"/></td>
-               <td><c:out value = "${row.firstName}"/></td>
-               <td><c:out value = "${row.lastName}"/></td>
-               <td><c:out value = "${row.status}"/></td>
+         <%
+          while(rs.next()){
+        %> 
+            <tr> 
+               <td><%=rs.getString("id")%></td>
+               <td><%=rs.getString("firstName")%></td>
+               <td><%=rs.getString("lastName")%></td>
+               <td><%=rs.getString("status")%></td>
               
-               <td><a href="viewApplication.jsp?name=${Id}">View Application</a></td>
+               <td><a href="viewApplication.jsp?name=<%=rs.getString("id")%>">View Application</a></td>
               
             </tr>
-         </c:forEach>
+              <%
+    }%>
       </table>
+<%
+}
+catch(Exception e)
+{
+    out.print(e);
+}
+%>
     </body>
 </html>
