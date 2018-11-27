@@ -57,6 +57,15 @@ public class LoginDAO {
             return "teacher";
         }
         }
+        else if (user.equals("HOD"))
+        {
+         String query="Select * from HOD where id='"+username+"' and password ='"+password+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            return "HOD";
+        }
+        }
 
             return "invalid login details";
         

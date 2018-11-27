@@ -16,17 +16,44 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RecordCheck {
     
-    public int insert(String id,String first,String last,String pass) throws ClassNotFoundException, SQLException, IOException
+    public int insert(String id,String first,String last,String pass,String ans1,String ans2,String ans3,String user) throws ClassNotFoundException, SQLException, IOException
     { 
-         
+        String que1="What is your favorite color??";
+        String que2="What is your pet name?";
+         String que3="What is your favorite food?";
+         int rs=0;
+        if(user.equals("Student")){
         Class.forName("com.mysql.jdbc.Driver");  
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
-        PreparedStatement ps = con.prepareStatement("insert into students values(?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("insert into students values(?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1, id);
         ps.setString(2, first);
         ps.setString(3, last);
         ps.setString(4,pass);
-        int rs=ps.executeUpdate();
+        ps.setString(5,que1);
+        ps.setString(6,ans1);
+        ps.setString(7,que2);
+        ps.setString(8,ans2);
+        ps.setString(9,que3);
+        ps.setString(10,ans3);
+        rs=ps.executeUpdate();
+        }
+        else if(user.equals("Teacher")){
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");  
+        PreparedStatement ps = con.prepareStatement("insert into teacher values(?,?,?,?,?,?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, first);
+        ps.setString(3, last);
+        ps.setString(4,pass);
+        ps.setString(5,que1);
+        ps.setString(6,ans1);
+        ps.setString(7,que2);
+        ps.setString(8,ans2);
+        ps.setString(9,que3);
+        ps.setString(10,ans3);
+        rs=ps.executeUpdate();
+        }
         return rs;
     } 
      public int update(String id,String action) throws ClassNotFoundException, SQLException, IOException
@@ -86,7 +113,7 @@ public class RecordCheck {
     { 
          
         Class.forName("com.mysql.jdbc.Driver");   
-        System.out.print(id+" "+sque+" "+ans);
+        //System.out.print(id+" "+sque+" "+ans);
         Statement stmt = null;
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root",""); 
         stmt = con.createStatement();
@@ -131,6 +158,6 @@ public class RecordCheck {
         
     public static void main(String args[]) throws ClassNotFoundException, SQLException, IOException{
       RecordCheck n=new RecordCheck();
-      
+     // n.insert("1611981156", "hardik", "dawer", "12345");
     }
 }

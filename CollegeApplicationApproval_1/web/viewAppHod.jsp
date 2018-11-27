@@ -160,9 +160,9 @@ span.price {
             <textarea form="gatepass" name="reason" id="reason" required readonly><%=rs.getString("reason")%></textarea>
             <b> Action:</b>
             <label for="approved"> 
-            <input type="radio" id="approved" value="Approved by teacher" name="action" required>:Approve</label>
+            <input type="radio" id="approved" value="Approved by HOD" name="action" required>:Approve</label>
             <label for="Decline"> 
-            <input type="radio" id="Decline" value="Declined by teacher" name="action" required checked>:Decline</label>
+            <input type="radio" id="Decline" value="Declined by HOD" name="action" required checked>:Decline</label>
             <label for="dereason" id="dereason">Reason for Declination:
             <textarea form="gatepass" name="dereason" id="decreason"  required>Declined</textarea></label>
           </div>

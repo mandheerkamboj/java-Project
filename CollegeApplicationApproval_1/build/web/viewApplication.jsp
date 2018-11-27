@@ -164,7 +164,7 @@ span.price {
             <label for="Decline"> 
             <input type="radio" id="Decline" value="Declined by teacher" name="action" required checked>:Decline</label>
             <label for="dereason" id="dereason">Reason for Declination:
-            <textarea form="gatepass" name="dereason" id="decreason"  required></textarea></label>
+            <textarea form="gatepass" name="dereason" id="decreason"  required>Declined</textarea></label>
           </div>
           <div class="col-33">
           <label for="lname"><i class="fa fa-user"></i>Last Name</label>

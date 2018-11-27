@@ -51,8 +51,13 @@ public class Login extends HttpServlet {
                 rd=request.getRequestDispatcher("teacher.jsp");  
                 rd.forward(request,response);  
             }
+             else if(result.equals("HOD"))
+            {
+                rd=request.getRequestDispatcher("HOD.jsp");  
+                rd.forward(request,response);  
+            }
             else{
-                rd=request.getRequestDispatcher("newhtml.html");  
+                rd=request.getRequestDispatcher("newhtml.jsp");  
                 rd.forward(request,response);
             }
         } catch (ClassNotFoundException ex) {

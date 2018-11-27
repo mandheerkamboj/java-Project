@@ -52,9 +52,9 @@
           </form>
         </div>
         <div class="modal-footer">
-            <form action="forgotPassword.jsp">
-            <p><button type="submit" class="btn btn-danger">Forgot Password</button></p>
-            </form>
+           
+            <p>Forgot<a href="forgotPassword.jsp" > Password?</li></a></p>
+
         </div>
     </div>
     <script>

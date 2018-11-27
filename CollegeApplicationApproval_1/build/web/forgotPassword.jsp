@@ -26,7 +26,7 @@
               <input type="text" class="form-control" id="usrname" name ="id" pattern=".{10}" placeholder="Enter username">
           
             </div>
-                <center> <button type="submit" onclick="myFunction()" class="btn btn-Success">Proceed</button></center>
+                <center> <button type="submit" class="btn btn-Success">Proceed</button></center>
           </form>
             
         </div>

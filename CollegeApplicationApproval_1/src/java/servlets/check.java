@@ -20,13 +20,19 @@ public class check extends HttpServlet {
         String fname=req.getParameter("firstname");
         String lname=req.getParameter("lastname");
         String pass = req.getParameter("pass");
+        String ans1 = req.getParameter("ans1");
+        String ans2 = req.getParameter("ans2");
+        String ans3 = req.getParameter("ans3");
+        String user = req.getParameter("usr");
         String re_pass = req.getParameter("re-pass");
+        //out.print(id+" "+fname+" "+lname+" "+pass+" "+re_pass+" "+ans1+" "+ans2+" "+ans3);
         RecordCheck rs = new RecordCheck();
         int ad;
         try {
             if(pass.equals(re_pass)){
-             ad=rs.insert(id, fname, lname, pass);
-             RequestDispatcher rd=req.getRequestDispatcher("signup.html");  
+                
+             ad=rs.insert(id, fname, lname, pass,ans1,ans2,ans3,user);
+             RequestDispatcher rd=req.getRequestDispatcher("register.html");  
              rd.forward(req,res);
             }
             else{

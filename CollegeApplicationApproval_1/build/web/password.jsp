@@ -36,7 +36,7 @@
         stmt = con.createStatement();
         String sql = "SELECT * from students where id='"+id+"' " ;
         ResultSet rs = stmt.executeQuery(sql);
-        
+        if(id!=null){
           while(rs.next()){
         %>    
       
@@ -70,6 +70,7 @@
       
 
 <%
+}
 }
 catch(Exception e)
 {
