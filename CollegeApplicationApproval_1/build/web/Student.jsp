@@ -103,7 +103,7 @@ iframe{
         </ul>
   <li><a href="#Disco">Disciplinary Actions</a></li>
   <li><a href="#password">Change Password</a></li>
-  <li><a href="#logout"> <span class="glyphicon glyphicon-log-out"></span> 
+  <li><a href="index.jsp"> <span class="glyphicon glyphicon-log-out"></span> 
           <%String id=(String)request.getAttribute("name");
             out.print("Logout "+id);
           session.setAttribute("name", id);%>

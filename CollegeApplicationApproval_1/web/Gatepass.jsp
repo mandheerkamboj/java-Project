@@ -138,7 +138,7 @@ textarea {
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
         stmt = con.createStatement();
-        String sql = "SELECT * from application where id='"+id+"'" ;
+        String sql = "SELECT * from students where id='"+id+"'" ;
        ResultSet rs = stmt.executeQuery(sql);
         while(rs.next()){
       

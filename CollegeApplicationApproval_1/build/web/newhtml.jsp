@@ -34,9 +34,10 @@
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="text" class="form-control" id="usrname" name ="id" pattern=".{10}" placeholder="Enter enrollment number">
             </div>
-            <div class="form-group">
+            
+                <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="psw" name="pass" placeholder="Enter password">
+              <input type="password" class="form-control" id="myInput" name="pass" placeholder="Enter password"><input type="checkbox" onclick="myFnction()">Show Password
             </div>
              <div class="form-group">
                     <label for="usr"><span class="glyphicon glyphicon-user"></span> User</label>
@@ -57,6 +58,14 @@
     <script>
 function myFunction() {
     alert("Sorry Username or Password Error!");
+}
+    function myFnction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
 }
 </script>
 </body>

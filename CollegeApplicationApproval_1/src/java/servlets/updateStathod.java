@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,15 +19,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dell
  */
-public class updateStat extends HttpServlet {
-    public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
+public class updateStathod extends HttpServlet {
+ public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
     {
          res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
         String id = req.getParameter("id");
-        String action = req.getParameter("action");
-        //out.print(action+" "+id);
-        RecordCheck rs = new RecordCheck();
+        String action = req.getParameter("act");
+        out.print(action+" "+id);
+        /*RecordCheck rs = new RecordCheck();
         try {
              rs.update(id, action);
              out.print("done");
@@ -36,6 +35,6 @@ public class updateStat extends HttpServlet {
             Logger.getLogger(check.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(check.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 }

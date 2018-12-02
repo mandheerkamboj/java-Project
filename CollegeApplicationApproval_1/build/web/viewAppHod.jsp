@@ -141,7 +141,7 @@ span.price {
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","");
         stmt = con.createStatement();
-        String sql = "SELECT * from application where id='"+id+"'" ;
+        String sql = "SELECT * from application where id='"+id+"'and status=approved" ;
        ResultSet rs = stmt.executeQuery(sql);
         while(rs.next()){
       
@@ -149,7 +149,7 @@ span.price {
         %>   
 <div class="col-75">
     <div class="container">
-        <form id="gatepass" action="updateStat" method="post">
+        <form id="gatepass" action="updateStathod" method="post">
         <div class="row">
           <div class="col-33">
             <label for="fname"><i class="fa fa-user"></i> First Name</label>
@@ -160,9 +160,9 @@ span.price {
             <textarea form="gatepass" name="reason" id="reason" required readonly><%=rs.getString("reason")%></textarea>
             <b> Action:</b>
             <label for="approved"> 
-            <input type="radio" id="approved" value="Approved by HOD" name="action" required>:Approve</label>
+            <input type="radio" id="approved" value="Approved" name="act" required>:Approve</label>
             <label for="Decline"> 
-            <input type="radio" id="Decline" value="Declined by HOD" name="action" required checked>:Decline</label>
+            <input type="radio" id="Decline" value="Declined" name="act" required checked>:Decline</label>
             <label for="dereason" id="dereason">Reason for Declination:
             <textarea form="gatepass" name="dereason" id="decreason"  required>Declined</textarea></label>
           </div>

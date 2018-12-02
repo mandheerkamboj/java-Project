@@ -36,6 +36,10 @@
         <servlet-name>updatepass</servlet-name>
         <servlet-class>servlets.updatepass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateStathod</servlet-name>
+        <servlet-class>servlets.updateStathod</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>check</servlet-name>
         <url-pattern>/check</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>updatepass</servlet-name>
         <url-pattern>/updatepass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateStathod</servlet-name>
+        <url-pattern>/updateStathod</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

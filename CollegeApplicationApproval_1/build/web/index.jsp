@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <title>Chitkara University</title>
   <style>
-      select {
+    select {
     width: 100%;
     padding: 7px 10px;
     margin: 8px 0;
@@ -20,8 +20,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-}
-      </style>
+} 
+</style>
 </head>
 <body>
     <div class="col-sm-offset-4 col-sm-4 " style="padding-top:5%;"> 

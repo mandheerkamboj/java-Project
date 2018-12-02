@@ -185,7 +185,7 @@ iframe{
 
 
     <li><a href="changepassword.html"  target="iframe">CHANGE PASSWORD</a></li>
-  <li><a href="#"  target="iframe"> <span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+  <li><a href="index.jsp"  target="iframe"> <span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 
 </ul>
 
