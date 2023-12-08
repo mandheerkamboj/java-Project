@@ -19,3 +19,10 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
+    
+- task: SnykSecurityScan@1
+  inputs:
+    serviceConnectionEndpoint: 'Snyk Test'
+    testType: 'app'
+    monitorWhen: 'always'
+    failOnIssues: true
