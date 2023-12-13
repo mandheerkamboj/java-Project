@@ -21,7 +21,5 @@ steps:
 - task: SnykSecurityScan@1
   inputs:
     serviceConnectionEndpoint: 'Snyk Test'
-    testType: 'app'
-    monitorWhen: 'always'
+    testType: 'code'
     failOnIssues: false
-    projectName: 'java-Project'
