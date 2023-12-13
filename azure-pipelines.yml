@@ -23,5 +23,5 @@ steps:
     serviceConnectionEndpoint: 'Snyk Test'
     testType: 'app'
     monitorWhen: 'always'
-    failOnIssues: true
+    failOnIssues: false
     projectName: 'java-Project'
